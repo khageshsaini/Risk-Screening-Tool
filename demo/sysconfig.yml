@@ -1,0 +1,45 @@
+# To clean the database set this value to "yes", will delete wather data too!
+clean_database: "yes"
+
+# yes will split weather data, no - skipt this step, used mostly if the data was already split and we want to skipt this step
+split_weather_data_enabled: "yes" 
+
+# yes - if you didn't import the weather files previously, no - if you did this previously and files are already in database 
+import_weather_files_enabled: "yes" 
+
+# you can skip importing station locations by setting this to "no"
+import_station_locations: "yes"
+
+# you can skip importing load profiles by setting this to "no"
+import_load_profiles: "yes"
+
+# should events be generated, to skip set to "no"
+generate_events: "yes" # yes, no
+
+# these are target files which should match relative folder
+# to the app root folder in case of local sync type
+# in case of remote_sync type they are implied and you can
+# put these to whatever string you want, but don't delete the enties
+# themselves
+# note: if running demo from the backend container relative paths
+# will be as follows:
+# ../../nc_files/FILE_NAME
+# ../../power_system_csv_files/FILE_NAME
+# ../../load_profiles/FILE_NAME
+# where FILE_NAME is the name of your specific file for each of the
+# data sources
+src_predictive_target: "../../nc_files/Texas_Data_2020_2021_Projected_2021.nc"
+src_historical_target: "../../nc_files/Texas_Data_2020_2021_Historical.nc"
+weather_station_file_target: "../../power_system_csv_files/station_location_texas.csv"
+load_folder_name_target: "../../load_profiles/2021_TEXAS"
+
+#server URI
+protocol: "http"
+host: "localhost"
+port: "8000"
+
+# Authentication
+username: "admin" 
+password: "Deft303@" 
+
+

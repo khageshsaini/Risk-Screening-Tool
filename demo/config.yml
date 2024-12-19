@@ -1,0 +1,62 @@
+# reset_all - "yes" or "no"
+# if set to yes it will
+#   - clean the database
+#   - split weather data
+#   - import weather data
+#   - import stations and locations
+# if set to "no" none of the above operations will be executed
+# if set to "sys" individual flags are taken from sysconfig
+reset_all: "yes"
+
+# project configuration
+delete_project_first: "yes" # "yes" or "no", delete project before creating it
+
+# project region will be used as prefix for procent names
+project_region: "TEXAS"
+
+# scenarios and models
+scenarios:
+  - "demo"
+models:
+  - "ERA5"
+
+# weather data, stations, locations, weather data splitting
+start_year: 2021
+end_year: 2022
+weather_stations_in_screening: 26
+
+target_year: 2021 
+power_systems_file: "input/power_systems/generatorData_ACEP_REF_2021.csv"
+risk_model_file: "input/risk_models/risk_models_texas.csv"
+aggregate_capacity_file: "output/aggregated_capacity_2021.csv"
+event_day_interval: 7
+event_day_overlap: 7
+top_events_percentage: 5
+threshold_MW: 0
+
+# Settings related to importing weather data
+
+# yes - sync files, no - do not sync regardless of sync type, use if files already synced
+sync_files_enabled: "yes"
+
+# files syncing has two types
+# local - assumes demo is run on the same machine as the backend
+# and the files will be copied by the demo itself from source
+# local directory to the target local directory (app/backend root)
+# remote_share - assumes demo is run from remote machine and
+# server backend will perform copy operations from remote share
+# to the remote backend directory target
+sync_type: "local" # local, remote_share
+
+# these are source files and you should only change file names
+# and not paths to them as paths are static for both local and
+# remote_share sync type. For remote share the folder structure must
+# be the same as the demo/inputs folder structure
+src_predictive: "Texas_Data_2020_2021_Projected_2021.nc" # must be in folder nc_files/
+src_historical: "Texas_Data_2020_2021_Historical.nc" # must be in folder nc_files/
+weather_station_file: "station_location_texas.csv" # must be in folder locations/
+load_folder_name: "2021_TEXAS" # must be in folder load_profiles/
+
+# additional settings related to sync_type: "local" are available in sysconfig.yml file
+
+# System settings including username and password for the api are available in sysconfig.yml file

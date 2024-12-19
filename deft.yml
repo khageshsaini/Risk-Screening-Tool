@@ -1,0 +1,54 @@
+version: "3.8"
+
+networks:
+  deft-network:
+
+volumes:
+  db-data:
+
+services:
+  db:
+    image: postgres:14.11
+    tty: true
+    container_name: deft_db_1
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/dumps:/dumps
+    networks:
+      - deft-network
+    env_file:
+      - ./.env
+    ports:
+      - "54322:5432"
+    environment:
+      - POSTGRES_DATABASE=deft
+      - POSTGRES_USER= deft
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - TZ=Etc/Greenwich
+      - PGTZ=Etc/Greenwich
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "deft", "-d", "deft"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  backend:
+    image: risctool.azurecr.io/risctool:2.0     
+    tty: true
+    networks:
+      - deft-network
+    env_file:
+      - ./.env
+    volumes:
+      - ./settings:/code/backend/backend
+      - ./logs/backend.log:/code/backend/deft_error.log
+      - ./nc_files/:/code/nc_files
+      - ./risk_models/:/code/risk_models
+      - ./power_systems/:/code/power_systems
+      - ./power_system_csv_files/:/code/power_system_csv_files
+      - ./load_profiles/:/code/load_profiles
+      - ./risk_models_xlsx_files/:/code/risk_models_xlsx_files
+      - ./risk_result_reports/:/code/risk_result_reports
+      #- /mnt/deft_imports/input:/code/share
+    ports:
+      - "8000:8000"

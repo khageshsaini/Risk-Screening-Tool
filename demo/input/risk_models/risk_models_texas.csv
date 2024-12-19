@@ -1,0 +1,96 @@
+tech,variable1,operator1,threshold1,variable2,operator2,threshold2,derating,risk
+PV,temperature,<=,32,precipitation,>=,0.001,90,Icing
+PV,temperature,<=,32,snow height,>=,1,100,Snow
+PV,temperature,<=,-29,,,,20,Extreme cold equipment damage
+PV,wind speed at 10m,>=,60,,,,40,Hurricane/tornado force wind damage
+PV,temperature,>,14,temperature,<=,41,4,Minimal temperature derating
+PV,temperature,>,41,temperature,<=,68,10,Mid-low temperature derating
+PV,temperature,>,68,temperature,<=,95,16,Mid temperature derating
+PV,temperature,>,95,temperature,<=,122,22,Mid-high temperature derating
+PV,temperature,>,122,temperature,<=,149,28,High temperature derating
+PV,temperature,>,149,temperature,<=,165,34,Extreme high temperature derating
+PV,temperature,>,165,,,,100,High Temperature Rating Limit
+PV,solar irradiance,<,800,solar irradiance,>=,600,20,Sub-max sun
+PV,solar irradiance,<,600,solar irradiance,>=,400,40,Mid-high sun
+PV,solar irradiance,<,400,solar irradiance,>=,200,60,Mid-low sun
+PV,solar irradiance,<,200,solar irradiance,>=,50,80,Low sun
+PV,solar irradiance,<,50,,,,100,No sun
+PV,precipitation,>=,0.25,precipitation,<,0.7,5,Possible Flood Risk
+PV,precipitation,>=,0.7,,,,10,Major Flood Risk
+WT_ON,wind speed at 100m,<,4,,,,100,Low wind output
+WT_ON,wind speed at 100m,>=,4,wind speed at 100m,<,6,88,Low windspeed
+WT_ON,wind speed at 100m,>=,6,wind speed at 100m,<,8,68,Mid-low windspeed
+WT_ON,wind speed at 100m,>=,8,wind speed at 100m,<,10,32,Mid-high windspeed
+WT_ON,wind speed at 100m,>=,10,wind speed at 100m,<,12,12,Suboptimal windspeed
+WT_ON,wind speed at 100m,>=,18,wind speed at 100m,<,23,12,High windspeed furl
+WT_ON,wind speed at 100m,>,23,,,,100,High speed cutout
+WT_ON,temperature,<,32,precipitation,>=,0.001,20,Blade icing
+WT_ON,temperature,<,-12,,,,100,Low Temperature Rating Limit (1)
+WT_ON,temperature,<,6,temperature,>=,-12,20,Low Temperature Rating Limit (2)
+WT_ON,temperature,>,96,temperature,<=,123,20,High Temperature Derating
+WT_ON,temperature,>,123,,,,100,High Temperature Rating Limit
+WT_OFF,wind speed at 100m,<,4,,,,100,Low wind output
+WT_OFF,wind speed at 100m,>=,4,wind speed at 100m,<,6,88,Low windspeed
+WT_OFF,wind speed at 100m,>=,6,wind speed at 100m,<,8,68,Mid-low windspeed
+WT_OFF,wind speed at 100m,>=,8,wind speed at 100m,<,10,32,Mid-high windspeed
+WT_OFF,wind speed at 100m,>=,10,wind speed at 100m,<,12,12,Suboptimal windspeed
+WT_OFF,wind speed at 100m,>=,25,wind speed at 100m,<,30,12,High windspeed furl
+WT_OFF,wind speed at 100m,>,30,,,,100,High speed cutout
+WT_OFF,temperature,<,32,precipitation,>=,2,20,Blade icing
+WT_OFF,temperature,<,14,,,,100,Low Temperature Rating Limit
+WT_OFF,temperature,>,77,temperature,<=,113,20,High Temperature Derating
+WT_OFF,temperature,>,113,,,,100,High Temperature Rating Limit
+NUC,wind speed at 10m,>=,26,precipitation,>,0.2,10,Tropical Storm
+NUC,wind speed at 10m,>=,30,,,,100,High wind limit
+NUC,temperature,>,131,temperature,<=,160,30,High Temperature Derate
+NUC,temperature,>,185,,,,100,High Temperature Limit
+NUC,temperature,<,-20,,,,100,Low Temperature Limit
+NUC,precipitation,>=,0.25,precipitation,<,0.7,5,Possible Flood Risk
+NUC,precipitation,>=,0.7,,,,10,Major Flood Risk
+GT,wind speed at 10m,>=,26,precipitation,>,0.2,10,Tropical Storm
+GT,temperature,>,51,temperature,<=,87,4,Minimal temperature derating
+GT,temperature,>,87,temperature,<=,105,11,Mid-low temperature derating
+GT,temperature,>,105,temperature,<=,123,18,Mid temperature derating
+GT,temperature,>,123,temperature,<=,131,25,Mid-high temperature derating
+GT,temperature,>,131,temperature,<=,185,40,High Temperature Derate
+GT,temperature,>,185,,,,100,High Temperature Limit
+GT,temperature,>=,30,temperature,<,40,9,Low temperature derating (1)
+GT,temperature,>=,20,temperature,<,30,18,Low temperature derating (2)
+GT,temperature,>=,10,temperature,<,20,27,Low temperature derating (3)
+GT,temperature,>=,0,temperature,<,10,33,Low temperature derating (4)
+GT,temperature,>=,-20,temperature,<,0,43,Low temperature derating (5)
+GT,temperature,<,-20,,,,100,Low Temperature Limit
+GT,precipitation,>=,0.25,precipitation,<,0.7,5,Possible Flood Risk
+GT,precipitation,>=,0.7,,,,10,Major Flood Risk
+CC,wind speed at 10m,>=,26,precipitation,>,2,10,Tropical Storm
+CC,temperature,>,51,temperature,<=,87,4,Minimal temperature derating
+CC,temperature,>,87,temperature,<=,105,11,Mid-low temperature derating
+CC,temperature,>,105,temperature,<=,123,18,Mid temperature derating
+CC,temperature,>,123,temperature,<=,131,25,Mid-high temperature derating
+CC,temperature,>,131,temperature,<=,185,40,High Temperature Derate
+CC,temperature,>=,30,temperature,<,40,9,Low temperature derating (1)
+CC,temperature,>=,20,temperature,<,30,18,Low temperature derating (2)
+CC,temperature,>=,10,temperature,<,20,27,Low temperature derating (3)
+CC,temperature,>=,0,temperature,<,10,33,Low temperature derating (4)
+CC,temperature,>=,-20,temperature,<,0,43,Low temperature derating (5)
+CC,temperature,<,-20,,,,100,Low Temperature Limit
+CC,precipitation,>=,0.25,precipitation,<,0.7,5,Possible Flood Risk
+CC,precipitation,>=,0.7,,,,10,Major Flood Risk
+ST,wind speed at 10m,>=,26,precipitation,>,0.2,10,Tropical Storm
+ST,temperature,>,10,temperature,<=,15,30,Low minimal temperature derating
+ST,temperature,>=,0,temperature,<,10,41,Low temperature derating (3)
+ST,temperature,>=,-10,temperature,<,0,53,Low temperature derating (4)
+ST,temperature,>=,-20,temperature,<,-10,91,Low temperature derating (5)
+ST,temperature,>,-50,temperature,<,-20,100,Low Temperature Limit
+ST,temperature,>,86,,,,20,High Temperature Derate
+ST,precipitation,>=,0.25,precipitation,<,0.7,5,Possible Flood Risk
+ST,precipitation,>=,0.7,,,,10,Major Flood Risk
+ES,wind speed at 10m,>=,26,precipitation,>,0.2,10,Tropical Storm
+ES,temperature,<=,6,,,,100,Low Temperature Limit
+ES,temperature,>,6,temperature,<=,42,20,Low Temperature Derate
+ES,temperature,>,96,temperature,<=,123,20,High Temperature Derate
+ES,temperature,>,123,,,,100,High Temperature Limit
+ES,precipitation,>=,0.25,precipitation,<,0.7,5,Possible Flood Risk
+ES,precipitation,>=,0.7,,,,10,Major Flood Risk
+load,load_base,>=,1,temperature,>,65,100,High (summer) load
+load,load_base,>=,1,temperature,<,65,100,High (winter) load
